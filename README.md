@@ -3,7 +3,7 @@
 Team:
 
 * Jonathan Blazer - Shoes
-* Person 2 - Which microservice?
+Italiz - Hats
 
 ## Design
 
