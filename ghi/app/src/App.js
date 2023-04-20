@@ -1,13 +1,15 @@
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import MainPage from './MainPage';
-import Nav from './Nav';
-import ShoeList from './ShoeList';
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import MainPage from "./MainPage";
+import Nav from "./Nav";
+import ShoeList from "./ShoeList";
 import ShoeForm from './ShoeForm';
+import HatList from "./HatList";
 
 function App(props) {
-  if (props.shoes === undefined) {
+  if (props.shoes === undefined && props.hats === undefined) {
     return null;
   }
+
   return (
     <BrowserRouter>
       <Nav />
@@ -19,6 +21,7 @@ function App(props) {
             <Route path="/shoes">
               <Route path="new" element={<ShoeForm />} />
             </Route>
+          <Route path="/hats" element={<HatList hats={props.hats} />} />
         </Routes>
       </div>
     </BrowserRouter>
