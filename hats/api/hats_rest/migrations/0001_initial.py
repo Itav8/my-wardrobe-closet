@@ -5,29 +5,50 @@ import django.db.models.deletion
 
 
 class Migration(migrations.Migration):
-
     initial = True
 
-    dependencies = [
-    ]
+    dependencies = []
 
     operations = [
         migrations.CreateModel(
-            name='LocationVO',
+            name="LocationVO",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('import_href', models.CharField(max_length=200, unique=True)),
-                ('name', models.CharField(max_length=200, unique=True)),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("import_href", models.CharField(max_length=200, unique=True)),
+                ("name", models.CharField(max_length=200, unique=True)),
             ],
         ),
         migrations.CreateModel(
-            name='Hat',
+            name="Hat",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('fabric', models.CharField(max_length=200)),
-                ('style', models.CharField(max_length=200)),
-                ('color', models.CharField(max_length=200)),
-                ('location', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='locations', to='hats_rest.locationvo')),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("fabric", models.CharField(max_length=200)),
+                ("style", models.CharField(max_length=200)),
+                ("color", models.CharField(max_length=200)),
+                (
+                    "location",
+                    models.ForeignKey(
+                        on_delete=django.db.models.deletion.CASCADE,
+                        related_name="locations",
+                        to="hats_rest.locationvo",
+                    ),
+                ),
             ],
         ),
     ]
