@@ -21,7 +21,6 @@ def get_locations():
     content = json.loads(response.content)
     print(content)
     for location in content["locations"]:
-        print("INSIDE", location)
         LocationVO.objects.update_or_create(
             closet_name=location["closet_name"],
             section_number=location["section_number"],

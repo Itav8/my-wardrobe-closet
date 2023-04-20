@@ -2,7 +2,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import MainPage from "./MainPage";
 import Nav from "./Nav";
 import ShoeList from "./ShoeList";
-import HatList from "./HatsList";
+import HatList from "./HatList";
 
 function App(props) {
   if (props.shoes === undefined && props.hats === undefined) {

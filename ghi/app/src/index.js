@@ -14,13 +14,13 @@ async function loadShoesAndHats() {
   const hatResponse = await fetch("http://localhost:8090/api/hats");
 
   if (shoeResponse.ok && hatResponse.ok) {
-    const data = await shoeResponse.json();
+    const shoeData = await shoeResponse.json();
     const hatData = await hatResponse.json();
-    console.log("Shoe Data", data)
-    console.log("Hat data", hatData)
+    console.log("Shoe Data", shoeData);
+    console.log("Hat data", hatData);
     root.render(
       <React.StrictMode>
-        <App shoes={data.shoes} hats={hatData.hats} />
+        <App shoes={shoeData.shoes} hats={hatData.hats} />
       </React.StrictMode>
     );
   } else {
