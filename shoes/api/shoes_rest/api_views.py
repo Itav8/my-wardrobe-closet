@@ -9,7 +9,10 @@ import json
 
 class ShoeListEncoder(ModelEncoder):
     model = Shoe
-    properties = ["model_name"]
+    properties = [
+        "model_name",
+        "manufacturer",
+        ]
 
 
 @require_http_methods(["GET", "POST"])
