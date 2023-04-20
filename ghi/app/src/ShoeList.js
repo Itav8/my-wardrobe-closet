@@ -50,6 +50,7 @@ const ShoeList = ({ dummy }) => {
                 <tr>
                     <th>Manufacturer</th>
                     <th>Model</th>
+                    <th>Picture</th>
                     <th>Delete?</th>
                 </tr>
             </thead>
@@ -59,6 +60,11 @@ const ShoeList = ({ dummy }) => {
                         <tr key={shoe.model_name}>
                             <td>{ shoe.manufacturer }</td>
                             <td>{ shoe.model_name }</td>
+                            <td style={{ width: "150px", height: "150px" }}>
+                                <div>
+                                    <img className='img-fluid' src={ shoe.picture_url } alt="Shoe picture" />
+                                </div>
+                            </td>
                             <td>
                                 <button role="button" onClick={() => handleDelete(shoe.id)}>
                                     { shoe.id }
