@@ -1,13 +1,42 @@
 import React from 'react'
 
 const ShoeList = ({ shoes }) => {
-  return (
+    const API_URL = "http://localhost:8080/api/shoes"      // for DELETE
+
+
+    const apiRequest = async (url = '', optionsObj = null, errMsg = null) => {
+        try {
+            const response = await fetch(url, optionsObj);
+            if (!response.ok) throw Error('Please reload the app');
+        } catch (err) {
+            errMsg = err.message;
+        } finally {         // will always execute whether error or not
+            return errMsg;
+        }
+    }
+
+    const handleDelete = async (id) => {
+        // const listItems = items.filter((item) => item.id !== id);
+        // setItems(listItems);
+
+        const deleteOptions = { method: 'DELETE' };
+        const reqUrl = `${API_URL}/${id}`;
+        const result = await apiRequest(reqUrl, deleteOptions);
+        if (result) {
+            console.log(result);
+        } else {
+            console.log(`else! ${result}`)
+        }
+    }
+
+    return (
     <div>
         <table className='table table-striped'>
             <thead>
                 <tr>
                     <th>Manufacturer</th>
                     <th>Model</th>
+                    <th>Delete?</th>
                 </tr>
             </thead>
             <tbody>
@@ -16,13 +45,18 @@ const ShoeList = ({ shoes }) => {
                         <tr key={shoe.model_name}>
                             <td>{ shoe.manufacturer }</td>
                             <td>{ shoe.model_name }</td>
+                            <td>
+                                <button role="button" onClick={() => handleDelete(shoe.id)}>
+                                    { shoe.id }
+                                </button>
+                            </td>
                         </tr>
                     )
                 })}
             </tbody>
         </table>
     </div>
-  )
-}
+    )
+    }
 
 export default ShoeList
