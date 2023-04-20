@@ -1,6 +1,8 @@
 import { React, useState, useEffect } from 'react'
+import { useNavigate } from 'react-router-dom'
 
 const ShoeForm = () => {
+    const navigate = useNavigate();
     const [bins, setBins] = useState([]);
     const [bin, setBin] = useState([]);
     const [manufacturer, setManufacturer] = useState([]);
@@ -56,7 +58,12 @@ const ShoeForm = () => {
 
             setManufacturer('');
             setModelName('');
+            setBin('');
+            setColor('');
+            setPictureUrl('');
         }
+
+        navigate("/shoes");
     }
 
     const fetchData = async () => {
@@ -76,7 +83,7 @@ const ShoeForm = () => {
 
 
 
-  return (
+    return (
     <div className='container'>
         <form onSubmit={handleSubmit}>
             <p>Please Create a Shoe</p>
@@ -111,7 +118,7 @@ const ShoeForm = () => {
             <button className='btn btn-lg btn-primary'>Create!</button>
         </form>
     </div>
-  )
+    )
 }
 
 export default ShoeForm
