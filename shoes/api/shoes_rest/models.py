@@ -21,7 +21,7 @@ class Shoe(models.Model):
     model_name = models.CharField(max_length=200)
     manufacturer = models.CharField(max_length=200)
     color = models.CharField(max_length=200)
-    picture_url = models.URLField(null=True)
+    picture_url = models.URLField(max_length=2000, null=True)
     bin = models.ForeignKey(
         BinVO, related_name="shoes", on_delete=models.CASCADE
     )
