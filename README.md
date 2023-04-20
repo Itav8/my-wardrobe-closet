@@ -3,7 +3,7 @@
 Team:
 
 * Jonathan Blazer - Shoes
-Italiz - Hats
+* Italiz - Hats
 
 ## Design
 
