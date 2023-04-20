@@ -15,10 +15,14 @@ React App:
 
 ## Shoes microservice
 
-Explain your models and integration with the wardrobe
-microservice, here.
+I used all the recommended attributes for the shoe.
+I looked in Wardrobe.models and copied everything over to the BinVO that is the ForeignKey on Shoe.
+In order to implement the Delete from React, I manually retrieved the id from the database and added to the JSON when returning the list.
 
 ## Hats microservice
 
-Explain your models and integration with the wardrobe
-microservice, here.
+Models:
+    Hat Model - contains all the hat data properties
+    LocationVO Model - contains all the location properties coming from wardrobe API (location) and is foreign key to hat model
+Poller Microservice:
+    Hat poller - polls the data every minute from wardrobe API (location) and creates or update LocationVO model
