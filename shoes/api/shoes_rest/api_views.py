@@ -38,3 +38,11 @@ def api_list_shoes(request):
         {"shoes": shoes},
         encoder=ShoeListEncoder,
     )
+
+@require_http_methods(["DELETE", "GET", "PUT"])
+def api_shoe_detail(request, pk):
+    if (request.method == "DELETE"):
+        count, _ = Shoe.objects.filter(id=pk).delete()
+        return JsonResponse({"deleted": count > 0})
+    else:
+        return JsonResponse({"message": "Invalid request"}, status=400)
