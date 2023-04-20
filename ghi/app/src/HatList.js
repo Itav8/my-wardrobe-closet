@@ -21,6 +21,7 @@ const HatList = (props) => {
           <th>Style</th>
           <th>Fabric</th>
           <th>Color</th>
+          <th>Picture</th>
           <th>Location</th>
         </tr>
       </thead>
