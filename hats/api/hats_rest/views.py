@@ -22,7 +22,7 @@ class HatDetailEncoder(ModelEncoder):
 
 class HatListEncoder(ModelEncoder):
     model = Hat
-    properties = ["style", "fabric", "color", "picture_url", "location"]
+    properties = ["id", "style", "fabric", "color", "picture_url", "location"]
     encoders = {"location": LocationVOEncoder()}
 
 
@@ -33,9 +33,8 @@ def api_list_hats(request):
         return JsonResponse({"hats": hats}, encoder=HatListEncoder)
     else:
         content = json.loads(request.body)
-        print(content)
         try:
-            location = LocationVO.objects.get(import_href=content["location"])
+            location = LocationVO.objects.get(id=content["location"])
             content["location"] = location
         except LocationVO.DoesNotExist:
             return JsonResponse({"message": "Invalid location id"}, status=400)
