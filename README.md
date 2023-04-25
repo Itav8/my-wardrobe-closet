@@ -20,5 +20,12 @@ microservice, here.
 
 ## Hats microservice
 
-Explain your models and integration with the wardrobe
-microservice, here.
+
+Models:
+    Hat Model - contains all the hat data properties
+    LocationVO Model - contains all the location properties coming from wardrobe API (location) and is foreign key to hat model
+
+Poller Microservice:
+    Hat poller - polls the data every minute from wardrobe API (location) and creates or update LocationVO model
+
+

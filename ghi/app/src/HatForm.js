@@ -2,8 +2,9 @@ import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 function HatForm() {
+  // React Router Navigation hook
+  const navigate = useNavigate();
   const [locations, setLocations] = useState([]);
-
   const [formData, setFormData] = useState({
     fabric: "",
     style: "",
@@ -11,6 +12,10 @@ function HatForm() {
     pictureUrl: "",
     location: "",
   });
+
+  useEffect(() => {
+    fetchLocationData();
+  }, []);
 
   const fetchLocationData = async () => {
     const url = "http://localhost:8100/api/locations/";
@@ -21,12 +26,6 @@ function HatForm() {
     }
   };
 
-  useEffect(() => {
-    fetchLocationData();
-  }, []);
-
-  // React Router Navigation hook
-  const navigate = useNavigate();
   const handleSubmit = async (e) => {
     e.preventDefault();
 

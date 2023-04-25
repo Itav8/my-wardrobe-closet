@@ -1,6 +1,8 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 
 const HatList = (props) => {
+  const [hats, setHats] = useState(props.hats);
+
   const handleDelete = async (hatId) => {
     const url = `http://localhost:8090/api/hats/${hatId}/`;
 
@@ -14,6 +16,18 @@ const HatList = (props) => {
     await fetch(url, fetchConfig);
   };
 
+  useEffect(() => {
+    const fetchHats = async () => {
+      const hatList = await fetch("http://localhost:8090/api/hats");
+      if (hatList.ok) {
+        const data = await hatList.json();
+        setHats(data.hats);
+      }
+    };
+
+    fetchHats();
+  }, []);
+
   return (
     <table className="table table-striped">
       <thead>
@@ -26,7 +40,7 @@ const HatList = (props) => {
         </tr>
       </thead>
       <tbody>
-        {props.hats.map((hat, i) => {
+        {hats.map((hat, i) => {
           return (
             <tr key={i}>
               <td>{hat.style}</td>
